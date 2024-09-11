@@ -27,16 +27,15 @@ const listarMetas = async () => {
     instructions: false,
   });
 
-  if (respostas.length == 0) {
-    console.log("Nenhuma meta selecionada!");
-    return;
-  }
-
   // Para cada "ForEach" só para lembrar
   metas.forEach((m) => {
     m.checked = false;
   });
 
+  if (respostas.length == 0) {
+    console.log("Nenhuma meta selecionada!");
+    return;
+  }
   respostas.forEach((resposta) => {
     const meta = metas.find((m) => {
       return m.value == resposta;
@@ -52,15 +51,15 @@ const metasRealizadas = async () => {
   const realizadas = metas.filter(() => {
     return meta.checked;
   });
-  if(realizadas.length == 0) {
-    console.log("Não existe metas realizadas")
-    return
+  if (realizadas.length == 0) {
+    console.log("Não existe metas realizadas");
+    return;
   }
 
   await select({
     message: "Metas realizadas",
     choices: [...realizadas],
-  })
+  });
 };
 
 const start = async () => {
