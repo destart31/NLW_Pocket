@@ -48,7 +48,11 @@ const listarMetas = async () => {
 };
 
 const metasRealizadas = async () => {
-  const realizadas = metas.filter(() => {
+  if (metas.length == 0) {
+    mensagem = "Não existem metas!";
+    return;
+  }
+  const realizadas = metas.filter((meta) => {
     return meta.checked;
   });
   if (realizadas.length == 0) {
@@ -57,8 +61,25 @@ const metasRealizadas = async () => {
   }
 
   await select({
-    message: "Metas realizadas",
+    message: "Metas realizadas: " + realizadas.length,
     choices: [...realizadas],
+  });
+};
+
+const metasAbertas = async () => {
+  const abertas = metas.filter((meta) => {
+    // "!meta.checked" é a mesma coisa que "meta.checked != true" no Javascript
+    // se a meta não está selecionada [] ela então não é verdadeira
+    // se a meta está selecionada [x] ela então é verdadeira
+    return !meta.checked;
+  });
+  if (abertas.length == 0) {
+    console.log("Não existe metas abertas :)");
+    return;
+  }
+  await select({
+    message: "Metas abertas: " + abertas.length,
+    choices: [...abertas],
   });
 };
 
@@ -70,6 +91,7 @@ const start = async () => {
         { name: "Cadastrar meta", value: "cadastrar" },
         { name: "Listar metas", value: "listar" },
         { name: "Metas realizadas", value: "realizadas" },
+        { name: "Metas abertas", value: "abertas" },
         { name: "Sair", value: "sair" },
       ],
     });
@@ -84,6 +106,9 @@ const start = async () => {
         break;
       case "realizadas":
         await metasRealizadas();
+        break;
+      case "abertas":
+        await metasAbertas();
         break;
       case "sair":
         console.log("Até a próxima!");
