@@ -22,6 +22,7 @@ const listarMetas = async () => {
   const respostas = await checkbox({
     message:
       "Use as setas para mudar de meta, o espaço para marcar ou desmarcar e o Enter para finalizar essa etapa",
+    // "..." a a função de "Espalhar" as metas
     choices: [...metas],
     instructions: false,
   });
@@ -31,6 +32,7 @@ const listarMetas = async () => {
     return;
   }
 
+  // Para cada "ForEach" só para lembrar
   metas.forEach((m) => {
     m.checked = false;
   });
@@ -46,6 +48,21 @@ const listarMetas = async () => {
   console.log("Meta(s) marcadas como concluída(s)");
 };
 
+const metasRealizadas = async () => {
+  const realizadas = metas.filter(() => {
+    return meta.checked;
+  });
+  if(realizadas.length == 0) {
+    console.log("Não existe metas realizadas")
+    return
+  }
+
+  await select({
+    message: "Metas realizadas",
+    choices: [...realizadas],
+  })
+};
+
 const start = async () => {
   while (true) {
     const opcao = await select({
@@ -53,6 +70,7 @@ const start = async () => {
       choices: [
         { name: "Cadastrar meta", value: "cadastrar" },
         { name: "Listar metas", value: "listar" },
+        { name: "Metas realizadas", value: "realizadas" },
         { name: "Sair", value: "sair" },
       ],
     });
@@ -64,6 +82,9 @@ const start = async () => {
         break;
       case "listar":
         await listarMetas();
+        break;
+      case "realizadas":
+        await metasRealizadas();
         break;
       case "sair":
         console.log("Até a próxima!");

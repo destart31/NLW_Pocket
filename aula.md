@@ -35,12 +35,15 @@ Apresentar os dados
 
 [x] Operadores de atribuição de valor: =
 [x] Operador de contatenação: +
+[x] Operador de compração: == != < > <= >=
+[x] Spread operator: ...
 
 ## Estruturas de dados:
 
 # Arrays:
 
 [x] Uma lista que contém qualquer tipo de dado
+[x] Métodos de array: push, [find, forEach, filter] : HOF (Higher Order Function)
 
 # Objetos:
 
@@ -56,17 +59,25 @@ Apresentar os dados
 
 ## Estrutura de repetição
 
-[x]while
+[x] while
+[x] for
 
 ## Condicionais
 
-[x]switch
-[x]if/else
+[x] switch
+[x] if/else
 
-## sMódulos em Node.js:
+## Módulos em Node.js:
 
-[x]Importação de módulos (require, CommonJS)
-[x]Biblioteca 'inquirer' para criar prompts interativos
+[x] Importação de módulos (require, CommonJS)
+[x] Biblioteca 'inquirer' para criar prompts interativos
+[x] FS (File System)
+
+## JSON
+
+[x] JavaScript Object Notation (.json)
+[x] JSON.parse(): transforma de JSON para JS
+[x] JSON.stringify(): transforma de JS para JSON
 
 ## Programação assíncrona e Promises:
 
