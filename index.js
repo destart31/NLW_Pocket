@@ -20,7 +20,7 @@ const carregarMetas = async () => {
 const salvarMetas = async () => {
   await fs.writeFile("metas.json", JSON.stringify(metas, null, 2));
 };
-
+//<---------------------Cadastro de metas-------------------->
 const cadastrarMeta = async () => {
   const meta = await input({ message: "Digite a meta:" });
 
@@ -33,6 +33,7 @@ const cadastrarMeta = async () => {
 
   mensagem = "Meta cadastrada com sucesso!";
 };
+//<---------------------Listar metas-------------------->
 
 const listarMetas = async () => {
   if (metas.length == 0) {
@@ -66,6 +67,7 @@ const listarMetas = async () => {
 
   mensagem = "Meta(s) marcadas como concluída(s)";
 };
+//<---------------------metas realizadas-------------------->
 
 const metasRealizadas = async () => {
   if (metas.length == 0) {
@@ -90,6 +92,7 @@ const metasRealizadas = async () => {
     choices: [...realizadas],
   });
 };
+//<---------------------deletar metas-------------------->
 
 const deletarMetas = async () => {
   if (metas.length == 0) {
@@ -116,6 +119,7 @@ const deletarMetas = async () => {
 
   mensagem = "Item(s) deletado(s) com sucesso!";
 };
+//<---------------------mestrar mensagens-------------------->
 
 const mostrarMensagem = () => {
   console.clear();
@@ -126,6 +130,7 @@ const mostrarMensagem = () => {
     mensagem = "";
   }
 };
+//<---------------------metas em aberto-------------------->
 
 const metasAbertas = async () => {
   if (metas.length == 0) {
@@ -147,6 +152,7 @@ const metasAbertas = async () => {
     choices: [...abertas],
   });
 };
+//<---------------------start do programa-------------------->
 
 const start = async () => {
   await carregarMetas();
